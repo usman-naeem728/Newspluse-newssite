@@ -1,22 +1,27 @@
 import React, { Component } from 'react'
+import img from './imgnotfound.jpg'
+import moment from 'moment/moment';
 
 export class Newsitem extends Component {
 
   render() {
-    let { title, description, imgUrl , url } = this.props
+    let { title, description, imgUrl , url , author, date} = this.props
+
     return (
       <div>
-        <div className="card" style={{ width: '18rem' }}>
-        <img src={!imgUrl?"data:image/png;base64,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":imgUrl} className="card-img-top" alt="..."/>
+        <div className="card" style={{boxShadow : 'rgba(0, 0, 0, 0.35) 0px 5px 15px'}}>
+        <img src={!imgUrl? img :imgUrl} className="card-img-top" alt="..."/>
           <div className="card-body">
-            <h5 className="card-title">{title}</h5>
+            <h4 className="card-title">{title}</h4>
             <p className="card-text">{description}</p>
-            <a href={url} target='-blank' className="btn btn-primary">Go somewhere</a>
+            <p className="card-text"><small className="text-muted">published by {!author? "unkown": author} on {moment(date).format('MMMM Do YYYY, h:mm a')}</small></p>
+            <a href={url} target='-blank' className="btn btn-success">Read more</a>
           </div>
+          
         </div>
       </div>
     )
-  }
+  
 }
-
+}
 export default Newsitem
