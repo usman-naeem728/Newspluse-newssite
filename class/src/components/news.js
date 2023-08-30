@@ -36,14 +36,14 @@ export class News extends Component {
   }
 
   async updateNews(pageNo) {
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apikey=dbe57b028aeb41e285a226a94865f7a7&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apikey=3e8fa7d170df4181950db3ea231faa6e&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json()
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
-      loading: false
+      loading:false
     })
   }
 
@@ -62,7 +62,8 @@ export class News extends Component {
 
   fetchMoreData = async () => {
     this.setState({ page: this.state.page + 1 })
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apikey=dbe57b028aeb41e285a226a94865f7a7&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apikey=3e8fa7d170df4181950db3ea231faa6e&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    this.setState({loading: true})
     let data = await fetch(url);
     let parsedData = await data.json()
     this.setState({
@@ -76,12 +77,12 @@ export class News extends Component {
       <div>
 
         <div className='container my-3'>
-          {/* {this.state.loading && <Spinner/> } */}
+          {this.state.loading && <Spinner/> }
           <InfiniteScroll
             dataLength={this.state.articles.length}
             next={this.fetchMoreData}
-            hasMore={this.state.articles.length !== this.state.toUpperCase}
-            loader={<Spinner />}
+            hasMore={this.state.articles.length !== this.state.totalResults}
+            loader={this.state.loading && <Spinner/>}
           >
 
             <div className='container'>
