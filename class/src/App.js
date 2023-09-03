@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import LoadingBar from 'react-top-loading-bar'
 
 export default class App extends Component {
+  pageSize = 5
+  apiKey = process.env.REACT_APP_NEWS_API
 
   state = {
     progress: 0
@@ -27,14 +29,14 @@ export default class App extends Component {
             
           />
           <Routes>
-            <Route path='/home' element={<News setProgress={this.setProgress}   key={'home'} pageSize={5} country='in' category='general' />} />
-            <Route path='/' element={<News setProgress={this.setProgress}   key={'sports'} pageSize={5} country='in' category='sports' />} />
-            <Route path='/general' element={<News setProgress={this.setProgress}   key={'general'} pageSize={5} country='in' category='general' />} />
-            <Route path='/business' element={<News setProgress={this.setProgress}   key={'business'} pageSize={5} country='in' category='business' />} />
-            <Route path='/entertainment' element={<News setProgress={this.setProgress}   key={'entertainment'} pageSize={5} country='in' category='entertainment' />} />
-            <Route path='/health' element={<News setProgress={this.setProgress}   key={'health'} pageSize={5} country='in' category='health' />} />
-            <Route path='/science' element={<News setProgress={this.setProgress}   key={'science'} pageSize={5} country='in' category='science' />} />
-            <Route path='/technology' element={<News setProgress={this.setProgress}   key={'technology'} pageSize={5} country='in' category='technology' />} />
+            <Route path='/home' element={<News setProgress={this.setProgress} apiKey={this.apiKey}  key={'home'} pageSize={this.pageSize} country='in' category='general' />} />
+            <Route path='/' element={<News setProgress={this.setProgress} apiKey={this.apiKey}  key={'sports'} pageSize={this.pageSize} country='in' category='sports' />} />
+            <Route path='/general' element={<News setProgress={this.setProgress} apiKey={this.apiKey}  key={'general'} pageSize={this.pageSize} country='in' category='general' />} />
+            <Route path='/business' element={<News setProgress={this.setProgress} apiKey={this.apiKey}  key={'business'} pageSize={this.pageSize} country='in' category='business' />} />
+            <Route path='/entertainment' element={<News setProgress={this.setProgress} apiKey={this.apiKey}  key={'entertainment'} pageSize={this.pageSize} country='in' category='entertainment' />} />
+            <Route path='/health' element={<News setProgress={this.setProgress} apiKey={this.apiKey}  key={'health'} pageSize={this.pageSize} country='in' category='health' />} />
+            <Route path='/science' element={<News setProgress={this.setProgress} apiKey={this.apiKey}  key={'science'} pageSize={this.pageSize} country='in' category='science' />} />
+            <Route path='/technology' element={<News setProgress={this.setProgress} apiKey={this.apiKey}  key={'technology'} pageSize={this.pageSize} country='in' category='technology' />} />
           </Routes>
         </Router>
 
