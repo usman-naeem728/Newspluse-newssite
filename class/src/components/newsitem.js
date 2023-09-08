@@ -1,27 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 import img from './imgnotfound.jpg'
 import moment from 'moment/moment';
 
-export class Newsitem extends Component {
+const Newsitem = (props) => {
 
-  render() {
-    let { title, description, imgUrl , url , author, date} = this.props
+  let { title, description, imgUrl, url, author, date } = props
 
-    return (
-      <div>
-        <div className="card" style={{boxShadow : 'rgba(0, 0, 0, 0.35) 0px 5px 15px'}}>
-        <img src={!imgUrl? img :imgUrl} className="card-img-top" alt="..."/>
-          <div className="card-body">
-            <h4 className="card-title">{title}</h4>
-            <p className="card-text">{description}</p>
-            <p className="card-text"><small className="text-muted">published by {!author? "unkown": author} on {moment(date).format('MMMM Do YYYY, h:mm a')}</small></p>
-            <a href={url} target='-blank' className="btn btn-success">Read more</a>
-          </div>
-          
+  return (
+    <div>
+      <div className="card" style={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
+        <img src={!imgUrl ? img : imgUrl} className="card-img-top" alt="..." />
+        <div className="card-body">
+          <h4 className="card-title">{title}</h4>
+          <p className="card-text">{description}</p>
+          <p className="card-text"><small className="text-muted">published by {!author ? "unkown" : author} on {moment(date).format('MMMM Do YYYY, h:mm a')}</small></p>
+          <a href={url} target='-blank' className="btn btn-success">Read more</a>
         </div>
+
       </div>
-    )
-  
-}
+    </div>
+  )
+
 }
 export default Newsitem
