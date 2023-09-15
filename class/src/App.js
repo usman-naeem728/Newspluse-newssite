@@ -19,10 +19,10 @@ const App = () => {
   };
 
   const handleClick = (e) => {
-   e.preventDefault()
+    e.preventDefault()
     setUpdated(message);
-
   };
+
 
   return (
     <div style={{
@@ -34,7 +34,7 @@ const App = () => {
         {/* navbar */}
 
         <div>
-          <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
               <a className="navbar-brand" href="#">News Pluse</a>
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,23 +55,23 @@ const App = () => {
                 </ul>
 
                 <form className="d-flex">
-                  <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" 
-                   onChange={handleChange}
-                   value={message}
+                  <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                    onChange={handleChange}
+                    value={message}
                   />
                   <button className="btn btn-outline-success" type="submit" onClick={handleClick}>Search</button>
-
                 </form>
               </div>
             </div>
           </nav>
         </div>
-
-        <button className='mx-3 my-2' onClick={() => {
-          setLit(!islit)
-        }} >
-          <img src={islit ? sun : moon} width={20} />
-        </button>
+        <div style={{marginTop:'58px' }}>
+          <button  onClick={() => {
+            setLit(!islit)
+          }} >
+            <img src={islit ? sun : moon} width={20} />
+          </button>
+        </div>
         <LoadingBar
           color='#f11946'
           height={4}
@@ -79,16 +79,17 @@ const App = () => {
 
         />
         <Routes>
-          <Route path='/home' element={<News  searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'home'} pageSize={pageSize} country='in' category='general' />} />
-          <Route path='/' element={<News  searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'sports'} pageSize={pageSize} country='in' category='sports' />} />
-          <Route path='/general' element={<News  searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'general'} pageSize={pageSize} country='in' category='general' />} />
-          <Route path='/business' element={<News  searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'business'} pageSize={pageSize} country='in' category='business' />} />
-          <Route path='/entertainment' element={<News  searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'entertainment'} pageSize={pageSize} country='in' category='entertainment' />} />
-          <Route path='/health' element={<News  searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'health'} pageSize={pageSize} country='in' category='health' />} />
-          <Route path='/science' element={<News  searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'science'} pageSize={pageSize} country='in' category='science' />} />
-          <Route path='/technology' element={<News  searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'technology'} pageSize={pageSize} country='in' category='technology' />} />
+          <Route path='/home' element={<News searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'home'} pageSize={pageSize} country='in' category='general' />} />
+          <Route path='/' element={<News searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'sports'} pageSize={pageSize} country='in' category='sports' />} />
+          <Route path='/general' element={<News searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'general'} pageSize={pageSize} country='in' category='general' />} />
+          <Route path='/business' element={<News searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'business'} pageSize={pageSize} country='in' category='business' />} />
+          <Route path='/entertainment' element={<News searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'entertainment'} pageSize={pageSize} country='in' category='entertainment' />} />
+          <Route path='/health' element={<News searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'health'} pageSize={pageSize} country='in' category='health' />} />
+          <Route path='/science' element={<News searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'science'} pageSize={pageSize} country='in' category='science' />} />
+          <Route path='/technology' element={<News searchquery={updated} mode={islit} setProgress={setProgress} apiKey={apiKey} key={'technology'} pageSize={pageSize} country='in' category='technology' />} />
         </Routes>
       </Router>
+
 
 
 
